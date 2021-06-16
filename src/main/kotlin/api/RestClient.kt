@@ -3,6 +3,7 @@ package api
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.slf4j.LoggerFactory
+import java.net.URI
 import java.net.URL
 import java.net.http.HttpClient
 import java.net.http.HttpClient.Redirect
@@ -32,7 +33,7 @@ class RestClient {
         log.debug("Request: GET {}", url)
 
         val request = HttpRequest.newBuilder()
-            .uri(URL(url).toURI())
+            .uri(URI(url))
             .GET().build()
         val result = httpClient.send(request, BodyHandlers.ofString(UTF_8))
         val status = result.statusCode()
