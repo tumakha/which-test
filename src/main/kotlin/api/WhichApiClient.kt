@@ -19,7 +19,7 @@ class WhichApiClient(email: String, apiBase: String = "https://which-technical-e
     }
 
     fun getMovements(): List<String> {
-        return restClient.get(getMovementsUrl).get("directions").asIterable().map { it.asText() }
+        return restClient.get(getMovementsUrl).get("directions").map { it.asText() }
     }
 
     fun checkLocation(location: Point): String {
